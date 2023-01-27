@@ -13,14 +13,18 @@ for(var i=0; i<numberOfDrumsButtons; i++){
 
         makeSound(buttonInnerHTML);
 
-        
+        buttonAnimation(buttonInnerHTML);
 
     });
     
 }
 
+// Detect when keyboard Press
 document.addEventListener("keypress", function(event){
    makeSound(event.key);
+
+   buttonAnimation(event.key);
+   console.log(event);
 });
 
 function makeSound(key){
@@ -69,6 +73,18 @@ function makeSound(key){
 
 
     }
+}
+
+
+function buttonAnimation(currentkey){
+    var activeButton = document.querySelector("." + currentkey);
+
+    // add CSS animation when key pressed
+    activeButton.classList.add("pressed");
+
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+    }, 100);
 }
 
 
